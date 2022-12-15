@@ -5,6 +5,7 @@ import { Search2Icon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 export default () => {
 
+
     let Links = [
         {
             label: "Home"
@@ -75,10 +76,13 @@ export default () => {
             </Flex>
         </Container>
         <Container maxW="90%">
-            <HStack textTransform={"uppercase"} mt={2} mb={2}>
+            <HStack textTransform={"uppercase"} mb={1}>
                 {
-                    Links.map((item) => {
-                        return <Link className={Styles.link}>{item.label}</Link>
+                    Links.map((item, index) => {
+                        return <Box className={Styles.link_container}>
+                            <Link key={index} className={Styles.link}>{item.label}</Link>
+                            <Box className={Styles.submenu_container}></Box>
+                        </Box>
                     })
                 }
             </HStack>

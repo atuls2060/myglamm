@@ -1,40 +1,60 @@
-.carousel {
-    display: flex;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-}
-.carousel_img{
-    width: calc(100%);
+/* 
+.slick-slide img {
+  vertical-align: bottom;
+} */
+.container {
+  margin-top: 20px;
 }
 
-.carousel_btn_left{
-    background-color: white;
-    border-radius: 50%;
-    font-size: 40px;
-    position: absolute;
-    left: 30px;
-    top: 50%;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1;
+.dark_container {
+  margin-top: 20px;
+  background-color: #F4F4F4;
+  padding: 0 5%;
 }
 
-.carousel_btn_right{
-    background-color: white;
-    border-radius: 50%;
-    font-size: 40px;
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1;
+.prevArrow {
+  display: block;
+  z-index: 2;
+  margin-left: 20px;
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  position: absolute;
+  cursor: pointer;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.indicator{
-    margin-top: 50px;
-    border: 1px solid;
+
+.nextArrow {
+  display: block;
+  z-index: 2;
+  margin-right: 20px;
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.indicator_dot{
-    padding: 20px;
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 5px;
+  border-radius: 4px;
+  background-color: lightgray;
+  transition: width .3s ease 0s;
+}
+
+:global .slick-active>a {
+  width: 16px !important;
+  background-color: #ff9797 !important;
 }
