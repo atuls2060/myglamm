@@ -1,0 +1,40 @@
+.carousel {
+    display: flex;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+.carousel_img{
+    width: calc(100%);
+}
+
+.carousel_btn_left{
+    background-color: white;
+    border-radius: 50%;
+    font-size: 40px;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.carousel_btn_right{
+    background-color: white;
+    border-radius: 50%;
+    font-size: 40px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+.indicator{
+    margin-top: 50px;
+    border: 1px solid;
+}
+.indicator_dot{
+    padding: 20px;
+}
