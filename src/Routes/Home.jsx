@@ -1,53 +1,44 @@
-import { ArrowForwardIcon, ArrowRightIcon } from "@chakra-ui/icons"
-import { Text, Card, Flex, Img, Image, CardBody, Container, Box, PopoverArrow, Circle, HStack, Spacer, Heading } from "@chakra-ui/react"
+import { Container, Img } from "@chakra-ui/react"
 import Carousel from "../Components/Carousel/Carousel"
+import Offers from "../Components/Offers"
+import products from "../Utils/products"
+
+
+const images = [{
+    image: "https://files.myglamm.com/site-images/original/ultimatte1920x527_1.jpg",
+},
+{
+    image: "https://files.myglamm.com/site-images/original/MM1920x527_2.png",
+},
+{
+    image: "https://files.myglamm.com/site-images/original/Homepage-desktop---1920-x-527---CTA-yes_8.png",
+}]
+
+let data = [
+    {
+        image: "https://files.myglamm.com/site-images/original/MM700x488_4.jpg",
+        caption: 'Precision Eyebrow Definer',
+    },
+    {
+        image: "https://files.myglamm.com/site-images/original/Moist700x488.jpg",
+        caption: "Moist Matte Lipstick",
+    },
+    {
+        image: "https://files.myglamm.com/site-images/original/700x488-1.gif",
+        caption: "POPxo Lip Gloss Kit",
+    }
+]
+
 
 export default () => {
     return <>
         <Img src="https://files.myglamm.com/site-images/original/Number-1-logo-strip-3360-x-279.gif" alt="banner" />
+        <Carousel images={images} />
+        <Offers heading="In The Spotlight" offers={data} />
 
-        <Carousel />
-        <Container mt={20} maxW="80%">
-
-            <Heading display={"inline-block"} size={"lg"} textTransform={"uppercase"} style={{ backgroundImage: "linear-gradient(180deg,transparent 60%,#ff9797 30px)" }}>In The Spotlight</Heading>
-
-            <Flex gap={5} p={5}>
-                <Card position="relative" boxShadow={"md"}>
-                    <Img w="100%" src="https://files.myglamm.com/site-images/original/MM700x488_4.jpg" />
-                    <HStack style={{ backgroundColor: "hsla(0,0%,100%,.75)" }} width="100%" bottom={0} position="absolute" p={2}>
-                        <Text>
-                            Precision Eyebrow Definer
-                        </Text>
-                        <Spacer />
-                        <Circle p={2} bg={"gray.300"}>
-                            <ArrowForwardIcon />
-                        </Circle>
-                    </HStack>
-                </Card >
-                <Card boxShadow={"md"}>
-                    <Img w="100%" src="https://files.myglamm.com/site-images/original/Moist700x488.jpg" />
-                    <HStack style={{ backgroundColor: "hsla(0,0%,100%,.75)" }} width="100%" bottom={0} position="absolute" p={2}>
-                        <Text>Moist Matte Lipstick</Text>
-                        <Spacer />
-                        <Circle p={2} bg={"gray.300"}>
-                            <ArrowForwardIcon />
-                        </Circle>
-                    </HStack>
-                </Card>
-                <Card boxShadow={"md"}>
-                    <Img w="100%" src="https://files.myglamm.com/site-images/original/700x488-1.gif" />
-                    <HStack style={{ backgroundColor: "hsla(0,0%,100%,.75)" }} width="100%" bottom={0} position="absolute" p={2}>
-                        <Text>
-                            POPxo Lip Gloss Kit
-                        </Text>
-                        <Spacer />
-                        <Circle p={2} bg={"gray.300"}>
-                            <ArrowForwardIcon />
-                        </Circle>
-                    </HStack>
-
-                </Card>
-            </Flex>
+        <Container mt={100} maxW="80%">
+            <Img src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/lit2240x614_3.jpg?alt=media&token=cb6a7947-e5b4-4e00-aa81-10d794e926d7" alt="banner" />
         </Container>
+        <Carousel slidesToShow={4} products={products} />
     </>
 }

@@ -1,7 +1,60 @@
-.link{
-    padding: 10px 20px;
+.navbar {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px -1px rgba(0, 0, 0, .1);
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 22px;
     border-bottom: 2px solid transparent;
 }
-.link:hover{
+
+.link:hover {
     border-bottom: 2px solid palevioletred;
+}
+
+.links_container>div:not(:first-child):not(:last-child) .link:hover+.submenu_overlay {
+    display: block;
+}
+
+.sub_link:first-child {
+    color: palevioletred;
+}
+
+.sub_link::after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px palevioletred;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.sub_link:hover::after {
+    transform: scaleX(1);
+}
+
+.submenu_overlay {
+    display: none;
+    width: 100%;
+    background-color: rgb(0, 0, 0, .7);
+    height: 100%;
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    pointer-events: none;
+}
+
+.submenu_container {
+    width: 90%;
+    margin: 0 5% 20px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    left: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    text-align: left;
+    pointer-events: auto;
+}
+
+.submenu_overlay:hover {
+    display: block;
 }
