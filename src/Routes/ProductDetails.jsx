@@ -2,8 +2,23 @@ import { StarIcon } from "@chakra-ui/icons"
 import { BiShoppingBag } from "react-icons/bi"
 import { Container, Heading, Text, HStack, Divider, Button, Grid } from "@chakra-ui/react"
 import ProductDetailsCarousel from "../Components/ProductDetailsCarousel"
+import { useEffect } from "react"
+import { db } from "../Utils/firebase"
+import { collection, getDocs } from "firebase/firestore";
 
 export default () => {
+
+    const getData = async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+        });
+
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
     return <Container mt={70} maxW="80%">
         <HStack align={"start"} spacing={10}>
             <ProductDetailsCarousel />
