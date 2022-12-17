@@ -9,7 +9,7 @@ export default () => {
     let Links = [
         {
             label: "Home",
-            path:"/",
+            path:"/product",
         },
         {
             label: "Makeup",

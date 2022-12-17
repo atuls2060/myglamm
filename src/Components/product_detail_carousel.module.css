@@ -1,0 +1,27 @@
+.product_image:hover~.product_zoom_image,
+.product_image:hover+.product_zoom_image+.product_zoom_image_glass {
+    display: block;
+
+}
+/* .product_image{
+    border: 1px solid;
+} */
+.product_zoom_image {
+    height: 100%;
+    position: absolute;
+    right: -85%;
+    z-index: 1;
+    border: 1px solid #E0E0E0;
+    display: none;
+}
+
+.product_zoom_image_glass {
+    height: 100px;
+    max-width: 100px;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid black;
+    pointer-events: none;
+    background: transparent;
+    display: none;
+}
