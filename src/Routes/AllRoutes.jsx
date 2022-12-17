@@ -3,6 +3,9 @@ import Products from "../Components/Products";
 import Home from "./Home";
 import Login from "./Login";
 import ProductDetails from "./ProductDetails";
+import Admin from "../Admin/Pages/Admin";
+import ProductsList from "../Admin/Pages/ProductsList";
+import Sales from "../Admin/Pages/Sales";
 
 export default () => {
     return <Routes>
@@ -10,6 +13,8 @@ export default () => {
         <Route path="/makeup" element={<Products />} />
         <Route path="/product" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin><Sales /></Admin>} />
+        <Route path="/admin/products" element={<Admin><ProductsList /></Admin>} />
     </Routes>
 
 }

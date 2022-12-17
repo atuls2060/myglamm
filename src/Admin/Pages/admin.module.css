@@ -1,0 +1,13 @@
+.sidenav{
+    background-color: #0A2558;
+    color: white;
+    width: 15%;
+    min-height: 100vh;
+}
+.link{
+    padding: 23px;
+    width: 100%;
+}
+.link:hover{
+    background-color: #081D45;
+}
