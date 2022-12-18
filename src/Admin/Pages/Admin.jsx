@@ -5,8 +5,6 @@ import Styles from "./admin.module.css"
 import SideNav from "../Components/SideNav"
 import TopNav from "../Components/TopNav"
 import { Route, Routes } from "react-router-dom"
-import ProductsList from "./ProductsList"
-
 
 
 

@@ -13,7 +13,7 @@ export default () => {
         <Route path="/makeup" element={<Products />} />
         <Route path="/product" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Admin><Sales /></Admin>} />
+        <Route exact path="/admin" element={<Admin><Sales /></Admin>} />
         <Route path="/admin/products" element={<Admin><ProductsList /></Admin>} />
     </Routes>
 
