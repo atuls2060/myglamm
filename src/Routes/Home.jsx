@@ -5,6 +5,7 @@ import products from "../Utils/products"
 import { db } from "../Utils/firebase"
 import { collection, addDoc } from "firebase/firestore";
 import { useEffect } from "react";
+import Footer from "../Components/Footer"
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -64,5 +65,6 @@ export default () => {
             <Img src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/lit2240x614_3.jpg?alt=media&token=cb6a7947-e5b4-4e00-aa81-10d794e926d7" alt="banner" />
         </Container>
         <Carousel slidesToShow={4} products={products} />
+        <Footer/>
     </>
 }

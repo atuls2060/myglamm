@@ -1,0 +1,13 @@
+.links_container > div{
+    text-align: start;
+}
+.links_container  div  a{
+    font-size: 14px;
+    color: black;
+}
+.links_container  div  a:hover{
+    color: palevioletred;
+}
+.links_container  div  a:first-child{
+    font-weight: 500;
+}
