@@ -9,7 +9,7 @@ import Sales from "../Admin/Pages/Sales";
 import { Box } from "@chakra-ui/react";
 
 export default () => {
-    return <Box mt={"153px"}>
+    return <Box mt={"143px"}>
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/makeup" element={<Products />} />

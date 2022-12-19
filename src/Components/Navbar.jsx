@@ -7,10 +7,10 @@ import Links from "../Utils/navbarData"
 export default () => {
 
 
-    return <Box m={0} className={Styles.navbar}>
-        <Box backgroundColor={"#FEE8E8"}>
-            <Container maxW="90%">
-                <Flex align="center" p={2} justifyContent={"space-between"}>
+    return <Box m={0} className={Styles.navbar} >
+        <Box backgroundColor={"#FEE8E8"} >
+            <Container maxW="90%" >
+                <Flex align="center" p={2} justifyContent={"space-between"} >
                     <HStack w="70%" spacing="50px">
                         <HStack>
                             <Img src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fgift.svg?alt=media&token=4495cbb4-b929-4f87-a6fd-14faa7590105" alt="" />
@@ -25,24 +25,26 @@ export default () => {
                 </Flex>
             </Container>
         </Box>
+        <Box bg={"white"} pointerEvents="auto">
+            <Container maxW="90%" bg={"white"}>
+                <Flex p={2} justifyContent={"space-between"}>
+                    <HStack w="60%" spacing="50px">
+                        <Link to={"/"}><Img maxHeight="50px" src="https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg" alt="logo" /></Link>
+                        <InputGroup>
+                            <InputLeftElement><Search2Icon /></InputLeftElement>
+                            <Input variant={"outline"} type="text" placeholder="Find Lipstick, Eyeliner, Makeup Tutorial, etc" />
+                        </InputGroup>
+                    </HStack>
+                    <HStack spacing={5}>
+                        <Img cursor={"pointer"} width="auto" height="30px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fbag.png?alt=media&token=da6a38ad-61ee-44f2-86ec-0621d4464e3b" alt="" />
+                        <Divider borderWidth=".5px" maxH="25px" bg="black" borderColor="lightgray" orientation="vertical" />
+                        <Img cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
+                    </HStack>
+                </Flex>
+            </Container>
+
         <Container maxW="90%">
-            <Flex p={2} justifyContent={"space-between"}>
-                <HStack w="60%" spacing="50px">
-                   <Link to={"/"}><Img maxHeight="50px" src="https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg" alt="logo" /></Link>
-                    <InputGroup>
-                        <InputLeftElement><Search2Icon /></InputLeftElement>
-                        <Input variant={"outline"} type="text" placeholder="Find Lipstick, Eyeliner, Makeup Tutorial, etc" />
-                    </InputGroup>
-                </HStack>
-                <HStack spacing={5}>
-                    <Img cursor={"pointer"} width="auto" height="30px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fbag.png?alt=media&token=da6a38ad-61ee-44f2-86ec-0621d4464e3b" alt="" />
-                    <Divider borderWidth=".5px" maxH="25px" bg="black" borderColor="lightgray" orientation="vertical" />
-                    <Img cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
-                </HStack>
-            </Flex>
-        </Container>
-        <Container maxW="90%">
-            <HStack className={Styles.links_container} spacing={0} textTransform={"uppercase"} mb={1}>
+            <HStack className={Styles.links_container} spacing={0} textTransform={"uppercase"}>
                 {
                     Links.map((item, index) => {
                         return <Box>
@@ -63,8 +65,8 @@ export default () => {
                                     }
 
                                     {
-                                        item.products?.map((product)=>{
-                                            return <ProductCard isNavBarCard={true}  {...product}/>
+                                        item.products?.map((product) => {
+                                            return <ProductCard isNavBarCard={true}  {...product} />
                                         })
                                     }
                                 </HStack>
@@ -74,5 +76,6 @@ export default () => {
                 }
             </HStack>
         </Container>
+        </Box>
     </Box >
 }
