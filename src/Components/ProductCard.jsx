@@ -8,18 +8,26 @@ import {
     Heading
 } from "@chakra-ui/react";
 
-export default ({ image, name, subtitle, offerPrice, actualPrice }) => {
+export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=false }) => {
+    let style = {
+       
+    }
+    if(isNavBarCard){
+        style = {
+            w:"200px", m:10 ,shadow:0,border:"1px solid #E0E0E0", borderRadius:"none"
+        }
+    }
     return (
         <>
-            <Card bg={"white"} w={"fit-content"} m={10} shadow={"md"}>
+            <Card bg={"white"} w={"fit-content"} m={10} shadow={"md"} {...style} style={{cursor:"pointer"}}>
                 <CardBody>
                     <Image
                         alt=""
                         src={image}
                     />
                     <VStack>
-                        <Heading size="xs">{name}</Heading>
-                        <Text fontSize="xs">
+                        <Heading noOfLines={isNavBarCard && 1} size="xs">{name}</Heading>
+                        <Text noOfLines={isNavBarCard && 1} fontSize="xs">
                            {
                             subtitle
                            }

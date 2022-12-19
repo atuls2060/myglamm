@@ -2,8 +2,10 @@ import { Flex, Container, Heading, Grid } from "@chakra-ui/react"
 import ProductCard2 from "./ProductCard2"
 import products from "../Utils/products"
 
+import { Link } from "react-router-dom"
+
 export default ({ heading, offers }) => {
-    return <Container mt={20} maxW="80%">
+    return <Container mt="200px" maxW="80%">
 
         <Heading display={"inline-block"} size={"xl"} textTransform={"uppercase"} style={{ backgroundImage: "linear-gradient(180deg,transparent 60%,#ff9797 30px)" }}>
             Makeup
@@ -12,8 +14,10 @@ export default ({ heading, offers }) => {
             gap={9}
         >
             {
-                products?.map((item) => {
-                    return <ProductCard2 {...item} />
+                products?.map((item, index) => {
+                    return <Link to={`/products/${index+1}`}>
+                        <ProductCard2 {...item} />
+                    </Link>
                 })
             }
         </Grid>

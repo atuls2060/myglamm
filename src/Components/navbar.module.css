@@ -1,11 +1,19 @@
 .navbar {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px -1px rgba(0, 0, 0, .1);
+    position: fixed;
+    z-index: 20;
+    background-color: white;
+    width: 100%;
+    left: 0;
+    top: 0;
 }
+
 
 .link {
     display: inline-block;
     padding: 10px 22px;
     border-bottom: 2px solid transparent;
+    font-size: 14px;
 }
 
 .link:hover {

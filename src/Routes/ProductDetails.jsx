@@ -19,13 +19,13 @@ export default () => {
     useEffect(() => {
         getData()
     }, [])
-    return <Container mt={70} maxW="80%">
+    return <Container mt="200px" maxW="80%">
         <HStack align={"start"} spacing={10}>
             <ProductDetailsCarousel />
             <Grid align="start">
-                <Heading fontSize={"lg"} lineHeight="30px">MYGLAMM SUPER SERUM COMPACT - 102W BEIGE</Heading>
+                <Heading fontSize={"lg"} lineHeight="30px">MYGLAMM SUPER SERUM COMPACT - 101N CREAM</Heading>
                 <Text mt={1} fontSize="lg">
-                    Skin-perfecting Compact Powder With Hyaluronic Acid
+                Skin-perfecting Compact Powder With Hyaluronic Acid
                 </Text>
                 <HStack mt={4}>
                     <Text fontWeight="400" fontSize="3xl">

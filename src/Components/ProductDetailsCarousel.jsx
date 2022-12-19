@@ -2,10 +2,10 @@ import Styles from "./product_detail_carousel.module.css";
 import { VStack, HStack, Img, Box } from "@chakra-ui/react"
 import { useRef, useState } from "react";
 let data = [
-    "https://files.myglamm.com/site-images/800x800/cash30.jpg",
-    "https://files.myglamm.com/site-images/800x800/Cash2.jpg",
-    "https://files.myglamm.com/site-images/800x800/Cash3.jpg",
-    "https://files.myglamm.com/site-images/800x800/Cash4.jpg",
+    "https://files.myglamm.com/site-images/800x800/CCrm.jpg",
+    "https://files.myglamm.com/site-images/800x800/Crme2.jpg",
+    "https://files.myglamm.com/site-images/800x800/Crme3.jpg",
+    "https://files.myglamm.com/site-images/800x800/Crme4.jpg",
 ]
 
 export default () => {

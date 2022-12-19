@@ -28,6 +28,13 @@ const products = [
         actualPrice: "₹950"
     },
     {
+        image: "https://files.myglamm.com/site-images/800x800/CCrm.jpg",
+        name: "MYGLAMM SUPER SERUM COMPACT - 101N CREAM",
+        subtitle: "Skin-perfecting Compact Powder With Hyaluronic Acid",
+        offerPrice: "₹₹499",
+        actualPrice: "₹595"
+    },
+    {
         image: "https://files.myglamm.com/site-images/400x400/MHML-(1).jpg",
         name: "MyGlamm LIT Creamy Matte Lipstick - Manhattan",
         subtitle: "Precision Perfect Matte Slimstick",
