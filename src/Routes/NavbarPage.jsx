@@ -9,7 +9,7 @@ export default ({ children }) => {
         }
         <Navbar />
         <LoginModal />
-        <Box mt={"143px"}>
+        <Box mt={"156px"}>
             {children}
         </Box>
     </>

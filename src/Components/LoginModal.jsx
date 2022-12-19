@@ -17,10 +17,18 @@ import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { useContext } from 'react';
 import { AuthContext } from './../Contexts/AuthContext';
+import { useState } from 'react';
 
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { openModal, toggleModal } = useContext(AuthContext);
+    const { openModal, toggleModal,loginUser } = useContext(AuthContext);
+    const [phone,setPhone] = useState(122);
+
+    const handleClick = ()=>{
+        loginUser(phone)
+        toggleModal()
+    }
+
     return <>
         <Modal
             isCentered
@@ -40,9 +48,9 @@ export default () => {
                         <Box  borderBottom="1px solid #E0E0E0">
                             <Heading fontSize={"14px"} p={2} borderBottom={"2px solid black"} w={"fit-content"} ml={10} size={"sm"}>*Mobile Number</Heading>
                         </Box>
-                        <InputGroup mt={5} mb={5} gap={7} isRequired>
+                        <InputGroup value={phone} onChange={(e)=>setPhone(e.target.value)} mt={5} mb={5} gap={7} isRequired>
                             <Input borderRadius="2px" focusBorderColor="black" maxW={20} type='tel' placeholder='Country Code' value={"+91"} />
-                            <Input borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
+                            <Input value={phone} borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
                         </InputGroup>
                         <Button mb={10} bg={"black"} color={"white"} size={'lg'} borderRadius="0"
                             _hover={{ bg: '#292a2d' }}
@@ -51,6 +59,7 @@ export default () => {
                                 transform: 'scale(0.98)',
                                 borderColor: '#bec3c9',
                             }}
+                            onClick={handleClick}
                         >
                             SIGN IN
                         </Button>

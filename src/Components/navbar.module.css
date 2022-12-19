@@ -67,3 +67,21 @@
 .submenu_overlay:hover {
     display: block;
 }
+
+.cart_bag {
+    position: relative;
+}
+
+.count_badge {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    right: -9px;
+    top: -5px;
+}

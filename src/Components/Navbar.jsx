@@ -4,12 +4,15 @@ import { Search2Icon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 import ProductCard from "../Components/ProductCard"
 import Links from "../Utils/navbarData"
+import ProfileDropDown from "./ProfileDropDown"
 import { useContext } from "react"
 import { AuthContext } from './../Contexts/AuthContext';
+import { CartContext } from './../Contexts/CartContext';
 export default () => {
-    const { toggleModal } = useContext(AuthContext)
+    const { itemCount } = useContext(CartContext)
+    const { authState, toggleModal } = useContext(AuthContext)
 
-    return <Box m={0} className={Styles.navbar} >
+    return <Box m={0} className={Styles.navbar}  >
         <Box backgroundColor={"#FEE8E8"} >
             <Container maxW="90%" >
                 <Flex align="center" p={2} justifyContent={"space-between"} >
@@ -27,7 +30,7 @@ export default () => {
                 </Flex>
             </Container>
         </Box>
-        <Box bg={"white"} pointerEvents="auto">
+        <Box pb={1} boxShadow={"sm"} pt={4} borderBottom="1px solid #E0E0E0" bg={"white"} pointerEvents="auto">
             <Container maxW="90%" bg={"white"}>
                 <Flex p={2} justifyContent={"space-between"}>
                     <HStack w="60%" spacing="50px">
@@ -38,11 +41,14 @@ export default () => {
                         </InputGroup>
                     </HStack>
                     <HStack spacing={5}>
-                        <Link to="/cart">
+                        <Link className={Styles.cart_bag} to="/cart">
+                            {itemCount > 0 && <Text className={Styles.count_badge}>{itemCount}</Text>}
                             <Img cursor={"pointer"} width="auto" height="30px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fbag.png?alt=media&token=da6a38ad-61ee-44f2-86ec-0621d4464e3b" alt="" />
                         </Link>
                         <Divider borderWidth=".5px" maxH="25px" bg="black" borderColor="lightgray" orientation="vertical" />
-                        <Img onClick={toggleModal} cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
+                        {
+                            authState.isAuth ? <ProfileDropDown /> : <Img onClick={toggleModal} cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
+                        }
                     </HStack>
                 </Flex>
             </Container>

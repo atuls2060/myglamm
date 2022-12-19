@@ -12,6 +12,7 @@ function AuthContextProvider({ children }) {
     })
 
     const loginUser = (token) => {
+        console.log(token)
         setAuthState({
             isAuth: true,
             token
