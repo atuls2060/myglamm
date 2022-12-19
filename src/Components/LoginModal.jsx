@@ -18,16 +18,34 @@ import { FcGoogle } from "react-icons/fc"
 import { useContext } from 'react';
 import { AuthContext } from './../Contexts/AuthContext';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { openModal, toggleModal,loginUser } = useContext(AuthContext);
-    const [phone,setPhone] = useState(122);
+    const [loading, setLoading] = useState(false);
+    const [disable, setDisable] = useState(true);
+    const { openModal, toggleModal, loginUser } = useContext(AuthContext);
+    const [phone, setPhone] = useState("");
 
-    const handleClick = ()=>{
-        loginUser(phone)
-        toggleModal()
+
+    const handleChange = (e) => {
+        let value = e.target.value
+        setDisable(value.length < 10)
+        setPhone(value)
     }
+
+    const handleClick = () => {
+        loginUser(phone)
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false)
+            toggleModal()
+        }, 700)
+    }
+
+    useEffect(() => {
+
+    }, [])
 
     return <>
         <Modal
@@ -45,14 +63,17 @@ export default () => {
                     <Grid gap={5} p={4} templateColumns={"1fr"} justifyContent="center">
                         <Text mt={3} fontSize={"14px"} textAlign={"center"}>Get 15% Good Points back on every order</Text>
                         <Img margin={"15px auto"} maxH="60px" src="https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg" alt="logo" />
-                        <Box  borderBottom="1px solid #E0E0E0">
+                        <Box borderBottom="1px solid #E0E0E0">
                             <Heading fontSize={"14px"} p={2} borderBottom={"2px solid black"} w={"fit-content"} ml={10} size={"sm"}>*Mobile Number</Heading>
                         </Box>
-                        <InputGroup value={phone} onChange={(e)=>setPhone(e.target.value)} mt={5} mb={5} gap={7} isRequired>
+                        <InputGroup value={phone} onChange={handleChange} mt={5} mb={5} gap={7} isRequired>
                             <Input borderRadius="2px" focusBorderColor="black" maxW={20} type='tel' placeholder='Country Code' value={"+91"} />
                             <Input value={phone} borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
                         </InputGroup>
-                        <Button mb={10} bg={"black"} color={"white"} size={'lg'} borderRadius="0"
+                        <Button
+                            isLoading={loading}
+                            loadingText='SIGNING IN'
+                            mb={10} bg={"black"} color={"white"} size={'lg'} borderRadius="0"
                             _hover={{ bg: '#292a2d' }}
                             _active={{
                                 bg: '#292a2d',
@@ -60,6 +81,7 @@ export default () => {
                                 borderColor: '#bec3c9',
                             }}
                             onClick={handleClick}
+                            disabled={disable}
                         >
                             SIGN IN
                         </Button>

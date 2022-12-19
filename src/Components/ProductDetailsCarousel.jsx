@@ -1,22 +1,16 @@
 import Styles from "./product_detail_carousel.module.css";
 import { VStack, HStack, Img, Box } from "@chakra-ui/react"
 import { useRef, useState } from "react";
-let data = [
-    "https://files.myglamm.com/site-images/800x800/CCrm.jpg",
-    "https://files.myglamm.com/site-images/800x800/Crme2.jpg",
-    "https://files.myglamm.com/site-images/800x800/Crme3.jpg",
-    "https://files.myglamm.com/site-images/800x800/Crme4.jpg",
-]
 
-export default () => {
-    const [currImage, setCurrImage] = useState(data[0]);
+export default ({ images=[] ,image,}) => {
+    const [currImage, setCurrImage] = useState(images[0]);
     const [style, setStyle] = useState({});
     const imgRef = useRef();
     const img2Ref = useRef();
     const img3Ref = useRef();
 
     const changeImage = (index) => {
-        setCurrImage(data[index])
+        setCurrImage(images[index])
     }
 
     const zoom = (e) => {
@@ -48,10 +42,10 @@ export default () => {
 
         let posX = x - 150;
         let posY = y - 280;
-        if(posX < imgWidth - 29){
+        if (posX < imgWidth - 29) {
             img3Ref.current.style.left = (x - 150) + 'px';
         }
-        if( posY < imgHeight-99){
+        if (posY < imgHeight - 99) {
             img3Ref.current.style.top = (y - 280) + 'px';
         }
     }
@@ -60,12 +54,12 @@ export default () => {
     return <HStack maxW="40%" position={"relative"}>
         <VStack spacing={5} maxW="70px">
             {
-                data.map((item, index) => {
+                images?.map((item, index) => {
                     return <Img onClick={() => changeImage(index)} src={item} />
                 })
             }
         </VStack>
-        <Img ref={imgRef} onMouseMove={zoom} className={Styles.product_image} width="380px" src={currImage} alt="" />
+        <Img ref={imgRef} onMouseMove={zoom} className={Styles.product_image} width="380px" src={currImage === undefined ? image :currImage} alt="" />
         <Box ref={img2Ref} className={Styles.product_zoom_image} width="380px" backgroundImage={currImage} alt="" />
         <Box ref={img3Ref} className={Styles.product_zoom_image_glass} width="380px" backgroundImage={currImage} alt="" />
     </HStack>

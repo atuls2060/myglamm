@@ -5,12 +5,17 @@ import { Link } from "react-router-dom"
 import ProductCard from "../Components/ProductCard"
 import Links from "../Utils/navbarData"
 import ProfileDropDown from "./ProfileDropDown"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthContext } from './../Contexts/AuthContext';
 import { CartContext } from './../Contexts/CartContext';
 export default () => {
     const { itemCount } = useContext(CartContext)
     const { authState, toggleModal } = useContext(AuthContext)
+
+
+    useEffect(()=>{
+
+    },[itemCount])
 
     return <Box m={0} className={Styles.navbar}  >
         <Box backgroundColor={"#FEE8E8"} >
