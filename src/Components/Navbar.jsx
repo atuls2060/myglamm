@@ -4,8 +4,10 @@ import { Search2Icon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 import ProductCard from "../Components/ProductCard"
 import Links from "../Utils/navbarData"
+import { useContext } from "react"
+import { AuthContext } from './../Contexts/AuthContext';
 export default () => {
-
+    const { toggleModal } = useContext(AuthContext)
 
     return <Box m={0} className={Styles.navbar} >
         <Box backgroundColor={"#FEE8E8"} >
@@ -36,46 +38,48 @@ export default () => {
                         </InputGroup>
                     </HStack>
                     <HStack spacing={5}>
-                        <Img cursor={"pointer"} width="auto" height="30px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fbag.png?alt=media&token=da6a38ad-61ee-44f2-86ec-0621d4464e3b" alt="" />
+                        <Link to="/cart">
+                            <Img cursor={"pointer"} width="auto" height="30px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fbag.png?alt=media&token=da6a38ad-61ee-44f2-86ec-0621d4464e3b" alt="" />
+                        </Link>
                         <Divider borderWidth=".5px" maxH="25px" bg="black" borderColor="lightgray" orientation="vertical" />
-                        <Img cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
+                        <Img onClick={toggleModal} cursor={"pointer"} width="auto" height="25px" src="https://firebasestorage.googleapis.com/v0/b/look-your-best.appspot.com/o/logos%2Fuser.png?alt=media&token=dda43cad-d4bc-439c-9854-f3d93834ad34" alt="" />
                     </HStack>
                 </Flex>
             </Container>
 
-        <Container maxW="90%">
-            <HStack className={Styles.links_container} spacing={0} textTransform={"uppercase"}>
-                {
-                    Links.map((item, index) => {
-                        return <Box>
-                            <Link to={item.path} key={index} className={Styles.link}>{item.label}</Link>
-                            <Box className={Styles.submenu_overlay}>
-                                <HStack align={"start"} p={4} spacing={20} fontSize={"sm"} className={Styles.submenu_container}>
-                                    {
-                                        item.submenu?.map((sub_item) => {
-                                            return <VStack align={"start"}>
-                                                {
-                                                    sub_item.submenu?.map((sub_item) => {
-                                                        return <Link className={Styles.sub_link}>{sub_item}</Link>
-                                                    })
-                                                }
-                                            </VStack>
+            <Container maxW="90%">
+                <HStack className={Styles.links_container} spacing={0} textTransform={"uppercase"}>
+                    {
+                        Links.map((item, index) => {
+                            return <Box>
+                                <Link to={item.path} key={index} className={Styles.link}>{item.label}</Link>
+                                <Box className={Styles.submenu_overlay}>
+                                    <HStack align={"start"} p={4} spacing={20} fontSize={"sm"} className={Styles.submenu_container}>
+                                        {
+                                            item.submenu?.map((sub_item) => {
+                                                return <VStack align={"start"}>
+                                                    {
+                                                        sub_item.submenu?.map((sub_item) => {
+                                                            return <Link className={Styles.sub_link}>{sub_item}</Link>
+                                                        })
+                                                    }
+                                                </VStack>
 
-                                        })
-                                    }
+                                            })
+                                        }
 
-                                    {
-                                        item.products?.map((product) => {
-                                            return <ProductCard isNavBarCard={true}  {...product} />
-                                        })
-                                    }
-                                </HStack>
+                                        {
+                                            item.products?.map((product) => {
+                                                return <ProductCard isNavBarCard={true}  {...product} />
+                                            })
+                                        }
+                                    </HStack>
+                                </Box>
                             </Box>
-                        </Box>
-                    })
-                }
-            </HStack>
-        </Container>
+                        })
+                    }
+                </HStack>
+            </Container>
         </Box>
     </Box >
 }
