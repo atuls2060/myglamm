@@ -6,47 +6,15 @@ import ProfileDropDown from "../Components/ProfileDropDown"
 import { CartContext } from './../Contexts/CartContext';
 
 
-export default ({ count = 3 }) => {
-    const { cartItems ,setCartItems} = useContext(CartContext);
-    const [total, setTotal] = useState(0)
+export default () => {
+    const {total, cartItems} = useContext(CartContext);
     const navigate = useNavigate()
-
-    let data = [{
-        image: "https://files.myglamm.com/site-images/original/BBL-(1).jpg",
-        name: "GLOW IRIDESCENT BRIGHTENING BODY LOTION",
-        offerPrice: "₹438",
-        quantity: 1
-    },
-    {
-        image: "https://files.myglamm.com/site-images/original/MFS.jpg",
-        name: "MYGLAMM MATTE FEST – LIP COMBO",
-        offerPrice: "₹499",
-        quantity: 1
-    },
-    {
-        image: "https://files.myglamm.com/site-images/original/RE-1-COMBO-.jpg",
-        name: "PERFECT DEFINITION LIP & EYE PENCIL DUO",
-        offerPrice: "₹534",
-        quantity: 1
-    }];
-
+    console.log(cartItems)
 
     const placeOrder = () => {
         alert("Order Placed")
-        setCartItems([])
         navigate("/")
     }
-
-    useEffect(() => {
-
-        let bill = 0;
-
-        cartItems.forEach((item) => {
-            bill += parseInt(item.offerPrice.substring(1))
-        })
-        setTotal(bill)
-
-    }, [cartItems])
 
     return <>
         <Card>
@@ -58,8 +26,8 @@ export default ({ count = 3 }) => {
         <Container maxW="80%">
             <Heading mt={10} mb={10} size="lg">MY BAG({cartItems.length})</Heading>
             {
-                cartItems?.map((item) => {
-                    return <CartItem {...item} />
+                cartItems?.map((item,index) => {
+                    return <CartItem {...item} id={index} />
                 })
             }
 

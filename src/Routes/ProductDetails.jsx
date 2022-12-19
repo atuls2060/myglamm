@@ -10,9 +10,8 @@ import { useParams } from "react-router-dom"
 import getSingleProduct from "../Utils/getSingleProduct"
 
 export default () => {
-    const { updateItemCount, cartItems, setCartItems } = useContext(CartContext);
+    const { addToCart } = useContext(CartContext);
     const [product, setProduct] = useState({})
-    const [quantity, setQuantity] = useState(0)
     const { id } = useParams();
 
 
@@ -30,9 +29,7 @@ export default () => {
     }
 
     const addToCartHandler = () => {
-        updateItemCount()
-        setQuantity(quantity + 1)
-        setCartItems([...cartItems, { ...product, quantity: quantity + 1 }])
+        addToCart(product)
     }
 
     useEffect(() => {

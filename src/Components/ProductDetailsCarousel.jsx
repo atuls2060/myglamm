@@ -1,10 +1,9 @@
 import Styles from "./product_detail_carousel.module.css";
-import { VStack, HStack, Img, Box } from "@chakra-ui/react"
-import { useRef, useState } from "react";
+import { VStack, HStack, Img, Box } from "@chakra-ui/react";
+import { useRef, useState, useEffect } from "react";
 
-export default ({ images=[] ,image,}) => {
-    const [currImage, setCurrImage] = useState(images[0]);
-    const [style, setStyle] = useState({});
+export default ({ images = [],image}) => {
+    const [currImage, setCurrImage] = useState("");
     const imgRef = useRef();
     const img2Ref = useRef();
     const img3Ref = useRef();
@@ -59,8 +58,8 @@ export default ({ images=[] ,image,}) => {
                 })
             }
         </VStack>
-        <Img ref={imgRef} onMouseMove={zoom} className={Styles.product_image} width="380px" src={currImage === undefined ? image :currImage} alt="" />
-        <Box ref={img2Ref} className={Styles.product_zoom_image} width="380px" backgroundImage={currImage} alt="" />
-        <Box ref={img3Ref} className={Styles.product_zoom_image_glass} width="380px" backgroundImage={currImage} alt="" />
+        <Img ref={imgRef} onMouseMove={zoom} className={Styles.product_image} width="380px" src={currImage === "" ? image:currImage} alt="" />
+        <Box ref={img2Ref} className={Styles.product_zoom_image} width="380px" backgroundImage={currImage === "" ? image:currImage} alt="" />
+        <Box ref={img3Ref} className={Styles.product_zoom_image_glass} width="380px" backgroundImage={currImage === "" ? image:currImage} alt="" />
     </HStack>
 }
