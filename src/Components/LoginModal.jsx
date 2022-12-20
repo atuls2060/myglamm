@@ -42,19 +42,17 @@ export default () => {
 
     const handleClick = () => {
         setLoading(true);
-        setShowOtp(true)
         if(showOtp){
             confirmOtp(otp)
         }else{
             verifyCaptcha()
         }
-       
 
     }
 
 
     const verifyCaptcha = () => {
-        console.log("called")
+        setText("Submit Otp")
         window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
             'size': 'invisible',
             'callback': (response) => {
@@ -73,7 +71,6 @@ export default () => {
             .then((confirmationResult) => {
                 alert("otp sent")
                 setShowOtp(true)
-                setText("Submit Otp")
                 setLoading(false)
                 window.confirmationResult = confirmationResult;
                 // ...
@@ -97,7 +94,7 @@ export default () => {
     }
     useEffect(()=>{
 
-    },[showOtp])
+    },[showOtp,text])
     return <>
         <Box id="recaptcha-container"></Box>
         <input value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="otp" />
@@ -121,7 +118,7 @@ export default () => {
                             <Heading fontSize={"14px"} p={2} borderBottom={"2px solid black"} w={"fit-content"} ml={10} size={"sm"}>*Mobile Number</Heading>
                         </Box>
                         {
-                            showOtp && <HStack align={"stretch"}>
+                            showOtp && <HStack  justifyContent="center" align={"center"}>
                                 <PinInput onChange={(value)=>setOtp(value)} otp>
                                     <PinInputField />
                                     <PinInputField />
