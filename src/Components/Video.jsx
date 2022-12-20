@@ -26,7 +26,7 @@ export default () => {
             </VStack>
         </Container>
         <Box pointerEvents={"none"}>
-        <video ref={videoRef}  width="100%" height="auto" autoPlay={true} >
+        <video ref={videoRef}  width="100%" height="auto" autoPlay={false} >
             <source src="https://www.myglamm.com/images/TellMyGlammWhatYouWant.webm" type="video/webm" />
         </video>
         </Box>

@@ -12,20 +12,26 @@ import {
     HStack,
     ButtonGroup,
     Box,
+    PinInput,
+    PinInputField,
 } from "@chakra-ui/react"
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from './../Contexts/AuthContext';
 import { useState } from 'react';
-import { useEffect } from 'react';
+import { authenticate } from "../Utils/firebase"
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [loading, setLoading] = useState(false);
     const [disable, setDisable] = useState(true);
     const { openModal, toggleModal, loginUser } = useContext(AuthContext);
+    const [text,setText] = useState("SIGN IN")
     const [phone, setPhone] = useState("");
+    const [showOtp, setShowOtp] = useState(false)
+    const [otp, setOtp] = useState("")
 
 
     const handleChange = (e) => {
@@ -35,19 +41,67 @@ export default () => {
     }
 
     const handleClick = () => {
-        loginUser(phone)
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false)
-            toggleModal()
-        }, 700)
+        setShowOtp(true)
+        if(showOtp){
+            confirmOtp(otp)
+        }else{
+            verifyCaptcha()
+        }
+       
+
     }
 
-    useEffect(() => {
 
-    }, [])
+    const verifyCaptcha = () => {
+        console.log("called")
+        window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response) => {
+                // reCAPTCHA solved, allow signInWithPhoneNumber.
+                // signInWithPhone();
+            }
+        }, authenticate);
+        setLoading(false)
+        signInWithPhone()
+    }
 
+    const signInWithPhone = () => {
+        const phoneNumber = "+91" + phone;
+        const appVerifier = window.recaptchaVerifier;
+        signInWithPhoneNumber(authenticate, phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                alert("otp sent")
+                setShowOtp(true)
+                setText("Submit Otp")
+                setLoading(false)
+                window.confirmationResult = confirmationResult;
+                // ...
+            }).catch((error) => {
+                // Error; SMS not sent
+                // ...
+            });
+    }
+    const confirmOtp = (code) => {
+        window.confirmationResult.confirm(code).then((result) => {
+            // User signed in successfully.
+            const user = result.user;
+            alert("User signed in successfully.")
+            console.log(user)
+            toggleModal()
+            loginUser(phone)
+            // ...
+        }).catch((error) => {
+            alert("Wrong otp")
+        });
+    }
+    useEffect(()=>{
+
+    },[showOtp])
     return <>
+        <Box id="recaptcha-container"></Box>
+        <input value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="otp" />
+        <button onClick={() => confirmOtp(otp)}>submit</button>
         <Modal
             isCentered
             onClose={toggleModal}
@@ -66,13 +120,27 @@ export default () => {
                         <Box borderBottom="1px solid #E0E0E0">
                             <Heading fontSize={"14px"} p={2} borderBottom={"2px solid black"} w={"fit-content"} ml={10} size={"sm"}>*Mobile Number</Heading>
                         </Box>
-                        <InputGroup value={phone} onChange={handleChange} mt={5} mb={5} gap={7} isRequired>
-                            <Input borderRadius="2px" focusBorderColor="black" maxW={20} type='tel' placeholder='Country Code' value={"+91"} />
-                            <Input value={phone} borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
-                        </InputGroup>
+                        {
+                            showOtp && <HStack align={"stretch"}>
+                                <PinInput onChange={(value)=>setOtp(value)} otp>
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                </PinInput>
+                            </HStack>
+                        }
+                        {
+                            !showOtp && <InputGroup value={phone} onChange={handleChange} mt={5} mb={5} gap={7} isRequired>
+                                <Input borderRadius="2px" focusBorderColor="black" maxW={20} type='tel' placeholder='Country Code' value={"+91"} />
+                                <Input value={phone} borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
+                            </InputGroup>
+                        }
                         <Button
                             isLoading={loading}
-                            loadingText='SIGNING IN'
+                            loadingText="Sending Otp"
                             mb={10} bg={"black"} color={"white"} size={'lg'} borderRadius="0"
                             _hover={{ bg: '#292a2d' }}
                             _active={{
@@ -83,7 +151,9 @@ export default () => {
                             onClick={handleClick}
                             disabled={disable}
                         >
-                            SIGN IN
+                           {
+                            text
+                           }
                         </Button>
                         <HStack>
                             <Divider />
