@@ -3,39 +3,26 @@ import { BiShoppingBag } from "react-icons/bi"
 import { Container, Heading, Text, HStack, Divider, Button, Grid } from "@chakra-ui/react"
 import ProductDetailsCarousel from "../Components/ProductDetailsCarousel"
 import { useContext, useEffect, useState } from "react"
-import { db } from "../Utils/firebase"
-import { collection, getDocs } from "firebase/firestore";
 import { CartContext } from './../Contexts/CartContext';
 import { useParams } from "react-router-dom"
-import getSingleProduct from "../Utils/getSingleProduct"
+import { getSingleProduct } from "../Utils/database"
 
 export default () => {
     const { addToCart } = useContext(CartContext);
     const [product, setProduct] = useState({})
     const { id } = useParams();
 
-
-    const getProduct = async () => {
-        const data = getSingleProduct(parseInt(id) - 1);
-        setProduct(data)
-    }
-
-    const getData = async () => {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-        });
-
-    }
-
     const addToCartHandler = () => {
         addToCart(product)
     }
 
+    const getData = async () => {
+        const data = await getSingleProduct(id)
+        setProduct(data)
+    }
     useEffect(() => {
-        getProduct()
         getData()
-    }, [])
+    }, [id])
 
 
     const { images, image, name, subtitle, offerPrice, rating = 5, totalRating = 16 } = product;

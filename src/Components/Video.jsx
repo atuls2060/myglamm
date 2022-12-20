@@ -1,9 +1,9 @@
 import { Box, Container, Heading, Img, Text, VStack } from "@chakra-ui/react"
-import { useRef, useState } from "react"
+import {useRef } from "react"
+
 
 export default () => {
     let videoRef = useRef();
-
 
     const clickHandler = ()=>{
         let video = videoRef.current;
@@ -15,9 +15,9 @@ export default () => {
         }
     }
 
-    return <Box position="relative">
+    return <Box  position="relative">
         <Container  left="50%" transform={"translate(-50%,-50%)"} top={"50%"} maxW="70%" position={"absolute"} color="white" zIndex={10}>
-            <VStack spacing={10}>
+            <VStack spacing={10} >
                 <Heading>
                     BRAND STORY
                 </Heading>

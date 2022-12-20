@@ -1,3 +1,5 @@
+import { getProductsbyCategory } from "./database"
+
 let Links = [
     {
         label: "Home",
@@ -5,7 +7,7 @@ let Links = [
     },
     {
         label: "Makeup",
-        path: "/makeup",
+        path: "/products?category=makeup",
         submenu: [
             {
                 submenu: [

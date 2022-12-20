@@ -62,16 +62,16 @@ export default () => {
                 <HStack className={Styles.links_container} spacing={0} textTransform={"uppercase"}>
                     {
                         Links.map((item, index) => {
-                            return <Box>
+                            return <Box key={index}>
                                 <Link to={item.path} key={index} className={Styles.link}>{item.label}</Link>
                                 <Box className={Styles.submenu_overlay}>
                                     <HStack align={"start"} p={4} spacing={20} fontSize={"sm"} className={Styles.submenu_container}>
                                         {
-                                            item.submenu?.map((sub_item) => {
-                                                return <VStack align={"start"}>
+                                            item.submenu?.map((sub_item,index) => {
+                                                return <VStack key={index} align={"start"}>
                                                     {
-                                                        sub_item.submenu?.map((sub_item) => {
-                                                            return <Link className={Styles.sub_link}>{sub_item}</Link>
+                                                        sub_item.submenu?.map((sub_item,index) => {
+                                                            return <Link key={index} className={Styles.sub_link}>{sub_item}</Link>
                                                         })
                                                     }
                                                 </VStack>
@@ -80,8 +80,8 @@ export default () => {
                                         }
 
                                         {
-                                            item.products?.map((product) => {
-                                                return <ProductCard isNavBarCard={true}  {...product} />
+                                            item.products?.map((product,index) => {
+                                                return <ProductCard key={index} isNavBarCard={true}  {...product} />
                                             })
                                         }
                                     </HStack>

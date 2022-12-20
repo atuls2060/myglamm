@@ -10,8 +10,8 @@ export default ({ heading, offers }) => {
         </Heading>
         <Flex gap={5} p={5}>
             {
-                offers.map((item) => {
-                    return <OfferCard {...item} />
+                offers.map((item,index) => {
+                    return <OfferCard key={index} {...item} />
                 })
             }
         </Flex>

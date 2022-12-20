@@ -1,12 +1,11 @@
-import { Container, Img } from "@chakra-ui/react"
+import { Button, Container, Img } from "@chakra-ui/react"
 import Carousel from "../Components/Carousel/Carousel"
 import Offers from "../Components/Offers"
-import products from "../Utils/products"
-import { db } from "../Utils/firebase"
-import { collection, addDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { getProducts } from "../Utils/database"
+import { useEffect, useState } from "react";
 import Footer from "../Components/Footer"
 import Video from "../Components/Video"
+import { signInWithPhone } from "../Utils/Authentication"
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -40,25 +39,24 @@ let data = [
 
 
 export default () => {
+    const [products, setProducts] = useState([])
 
-    const addUser = async () => {
-        console.log("adding")
-        try {
-            const docRef = await addDoc(collection(db, "users"), {
-                first: "Ada",
-                last: "Lovelace",
-                born: 1815
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
+    const getData = async () => {
+        const data = await getProducts()
+        setProducts(data)
     }
+
+    const authenticate = () => {
+        signInWithPhone()
+    }
+
     useEffect(() => {
-        //addUser()
-    }, [])
+        // authenticate()
+        getData()
+    }, [data])
     return <>
-        <Img src="https://files.myglamm.com/site-images/original/Number-1-logo-strip-3360-x-279.gif" alt="banner" />
+        {/* <Button id="recaptcha-container"></Button> */}
+        <Img  src="https://files.myglamm.com/site-images/original/Number-1-logo-strip-3360-x-279.gif" alt="banner" />
         <Carousel images={images} />
         <Offers heading="In The Spotlight" offers={data} />
 

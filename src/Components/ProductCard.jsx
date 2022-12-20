@@ -7,8 +7,9 @@ import {
     Text,
     Heading
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=false }) => {
+export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=false ,id}) => {
     let style = {
        
     }
@@ -18,7 +19,7 @@ export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=fa
         }
     }
     return (
-        <>
+        <Link to={`/products/${id}`}>
             <Card bg={"white"} w={"fit-content"} m={10} shadow={"md"} {...style} style={{cursor:"pointer"}}>
                 <CardBody>
                     <Image
@@ -45,6 +46,6 @@ export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=fa
                     </VStack>
                 </CardBody>
             </Card>
-        </>
+        </Link>
     );
 };
