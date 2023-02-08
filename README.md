@@ -27,16 +27,18 @@ Hello guys in this project i cloned  ModeMyGlamm website where you can buy beaut
 
 
 <h1>Landing Page-</h1> 
+
 ![Screenshot (158)](https://user-images.githubusercontent.com/34827845/217428488-3554dc69-be55-49c8-a8ab-5323868b6779.png)
 
 <h1>All Product Page</h1>
 In this page there you can see all the product related to diffirent category .If you want to see more product you can click on second page. You can filter your product by different category and price.
+
 ![Screenshot (159)](https://user-images.githubusercontent.com/34827845/217428552-c6a21eeb-2a37-4cfb-8d66-ae7e743ddab1.png)
 
 
 <h1>Details page</h1>
 
-if you click on any beauty product it will redirect you details page and will show details of the product
+if you click on any product it will redirect you details page and will show details of the product
 ![Screenshot (160)](https://user-images.githubusercontent.com/34827845/217428594-aec47de1-e411-4301-bdac-94d0518544c1.png)
 
 
