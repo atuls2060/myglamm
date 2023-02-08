@@ -8,6 +8,7 @@ let Links = [
     {
         label: "Makeup",
         path: "/products?category=makeup",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fmakeup-min_2.jpg&w=64&q=75",
         submenu: [
             {
                 submenu: [
@@ -49,7 +50,8 @@ let Links = [
     },
     {
         label: "Hair Care",
-        path: "#",
+        path: "/products?category=haircare",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fhaircare-min_5.jpg&w=64&q=75",
         submenu: [
             {
                 submenu: [
@@ -63,7 +65,7 @@ let Links = [
                 ]
             }
         ],
-        products:[
+        products: [
             {
                 image: "https://files.myglamm.com/site-images/800x800/Onion-Nourishment---Shampoo-&-Conditioner_1.jpg",
                 name: "Onion Nourishment - Shampoo & Conditioner Combo - Hair Care",
@@ -89,7 +91,8 @@ let Links = [
     },
     {
         label: "Skin Care",
-        path: "#",
+        path: "/products?category=skin",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fskincare-min_5.jpg&w=64&q=75",
         submenu: [
             {
                 submenu: [
@@ -110,7 +113,7 @@ let Links = [
                 ]
             }
         ],
-        products:[
+        products: [
             {
                 image: "https://files.myglamm.com/site-images/800x800/17-Amla-Moisturising-Gel-Post-1-01.jpg",
                 name: "MANISH MALHOTRA AMLA MOISTURISING GEL",
@@ -138,6 +141,7 @@ let Links = [
     {
         label: "Sanitizing Care",
         path: "#",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2FSanitizing-min_5.jpg&w=64&q=75",
         submenu: [
             {
                 submenu: [
@@ -150,7 +154,7 @@ let Links = [
             }
         ]
         ,
-        products:[
+        products: [
             {
                 image: "https://files.myglamm.com/site-images/400x400/Game-over-Germs_2.jpg",
                 name: "GAME OVER GERMS",
@@ -175,31 +179,37 @@ let Links = [
         ]
     },
     {
+        label: "Favourites",
+        path: "#",
+        image:"https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fsk-fav-min_5.jpg&w=64&q=75"
+    },
+    {
         label: "Collection",
         path: "#",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fwinter-atore-min_5.jpg&w=64&q=75",
         submenu: [
             {
                 submenu: [
-                   "SHOP BY COLLECTION",
-                   "MyGlamm",
-                   "SUPERFOODS",
-                   "Treat Love Care",
-                   "Clean Beauty",
-                   "POPxo",
-                   "WIPEOUT",
-                   "GLOW Iridescent Brightening Skincare",
-                   "Manish Malhotra",
-                   "YOUTHfull",
-                   "LIT Collection",
-                   "POSE",
-                   "K.Play",
-                   "Just Dropped",
+                    "SHOP BY COLLECTION",
+                    "MyGlamm",
+                    "SUPERFOODS",
+                    "Treat Love Care",
+                    "Clean Beauty",
+                    "POPxo",
+                    "WIPEOUT",
+                    "GLOW Iridescent Brightening Skincare",
+                    "Manish Malhotra",
+                    "YOUTHfull",
+                    "LIT Collection",
+                    "POSE",
+                    "K.Play",
+                    "Just Dropped",
                 ]
             }
         ]
         ,
-        products:[
-           
+        products: [
+
         ]
     }
     ,
@@ -207,18 +217,12 @@ let Links = [
     {
         label: "Rewards",
         path: "#",
-    },
-    {
-        label: "Collection",
-        path: "#",
-    },
-    {
-        label: "LYD Studio",
-        path: "#",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fgifting-min_5.jpg&w=64&q=75",
     },
     {
         label: "Offers",
         path: "#",
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fwedding-store-min_5.jpg&w=64&q=75",
     }
 ]
 export default Links

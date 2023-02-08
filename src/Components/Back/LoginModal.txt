@@ -1,0 +1,196 @@
+import {
+    Modal, ModalOverlay, ModalContent,
+    ModalCloseButton, ModalBody, ModalFooter,
+    Button, useDisclosure,
+    Text,
+    Img,
+    Heading,
+    InputGroup,
+    Input,
+    Divider,
+    Grid,
+    HStack,
+    ButtonGroup,
+    Box,
+    PinInput,
+    PinInputField,
+    useToast,
+} from "@chakra-ui/react"
+import { FaFacebook } from "react-icons/fa"
+import { FcGoogle } from "react-icons/fc"
+import { useContext, useEffect } from 'react';
+import { AuthContext } from './../Contexts/AuthContext';
+import { useState } from 'react';
+import { authenticate } from "../Utils/firebase"
+import { getAdditionalUserInfo, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+
+export default () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [loading, setLoading] = useState(false);
+    const [disable, setDisable] = useState(true);
+    const { openModal, toggleModal, loginUser } = useContext(AuthContext);
+    const [text, setText] = useState("SIGN IN")
+    const [phone, setPhone] = useState("");
+    const [showOtp, setShowOtp] = useState(false)
+    const [otp, setOtp] = useState("")
+    const toast = useToast()
+
+    const handleChange = (e) => {
+        let value = e.target.value
+        setDisable(value.length < 10)
+        setPhone(value)
+    }
+
+    const handleClick = () => {
+        setLoading(true);
+        if (showOtp) {
+            confirmOtp(otp)
+        } else {
+            verifyCaptcha()
+        }
+
+    }
+
+
+    const verifyCaptcha = () => {
+        setText("Submit Otp")
+        window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response) => {
+                // reCAPTCHA solved, allow signInWithPhoneNumber.
+                // signInWithPhone();
+            }
+        }, authenticate);
+        setLoading(false)
+        signInWithPhone()
+    }
+
+    const signInWithPhone = () => {
+        const phoneNumber = "+91" + phone;
+        const appVerifier = window.recaptchaVerifier;
+        signInWithPhoneNumber(authenticate, phoneNumber, appVerifier)
+            .then((confirmationResult) => {
+                toast({
+                    title: 'Otp Sent',
+                    status: 'success',
+                    duration: 2000,
+                    isClosable: true,
+                    position: "top"
+                })
+                setShowOtp(true)
+                setLoading(false)
+                window.confirmationResult = confirmationResult;
+                // ...
+            }).catch((error) => {
+                // Error; SMS not sent
+                // ...
+            });
+    }
+    const confirmOtp = (code) => {
+        window.confirmationResult.confirm(code).then((result) => {
+            // User signed in successfully.
+            const user = result.user;
+            const { isNewUser } = getAdditionalUserInfo(result)
+            if (isNewUser) {
+
+            } else {
+                toast({
+                    title: 'Welcome back!',
+                    status: 'success',
+                    duration: 2000,
+                    isClosable: true,
+                    position: "top"
+                })
+                toggleModal()
+                loginUser(phone)
+            }
+            // ...
+        }).catch((error) => {
+            console.log(error)
+            toast({
+                title: 'You have entered wrong otp',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+                position: "top"
+            })
+            setLoading(false)
+        });
+    }
+    useEffect(() => {
+
+    }, [showOtp, text])
+    return <>
+        <Box id="recaptcha-container"></Box>
+        <input value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="otp" />
+        <button onClick={() => confirmOtp(otp)}>submit</button>
+        <Modal
+            isCentered
+            onClose={toggleModal}
+            isOpen={openModal}
+            motionPreset='slideInBottom'
+            motionDelay="2s"
+            size={"lg"}
+        >
+            <ModalOverlay />
+            <ModalContent>
+                <ModalCloseButton />
+                <ModalBody>
+                    <Grid gap={5} p={4} templateColumns={"1fr"} justifyContent="center">
+                        <Text mt={3} fontSize={"14px"} textAlign={"center"}>Get 15% Good Points back on every order</Text>
+                        <Img margin={"15px auto"} maxH="60px" src="https://files.myglamm.com/site-images/original/MyGlamm-Logo_1.jpg" alt="logo" />
+                        <Box borderBottom="1px solid #E0E0E0">
+                            <Heading fontSize={"14px"} p={2} borderBottom={"2px solid black"} w={"fit-content"} ml={10} size={"sm"}>*Mobile Number</Heading>
+                        </Box>
+                        {
+                            showOtp && <HStack justifyContent="center" align={"center"}>
+                                <PinInput onChange={(value) => setOtp(value)} otp>
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                </PinInput>
+                            </HStack>
+                        }
+                        {
+                            !showOtp && <InputGroup value={phone} onChange={handleChange} mt={5} mb={5} gap={7} isRequired>
+                                <Input borderRadius="2px" focusBorderColor="black" maxW={20} type='tel' placeholder='Country Code' value={"+91"} />
+                                <Input value={phone} borderRadius="2px" focusBorderColor="black" type='tel' placeholder='phone number' required />
+                            </InputGroup>
+                        }
+                        <Button
+                            isLoading={loading}
+                            loadingText="Sending Otp"
+                            mb={10} bg={"black"} color={"white"} size={'lg'} borderRadius="0"
+                            _hover={{ bg: '#292a2d' }}
+                            _active={{
+                                bg: '#292a2d',
+                                transform: 'scale(0.98)',
+                                borderColor: '#bec3c9',
+                            }}
+                            onClick={handleClick}
+                            disabled={disable}
+                        >
+                            {
+                                text
+                            }
+                        </Button>
+                        <HStack>
+                            <Divider />
+                            <Text width="270px" fontSize={"xs"}>or continue with</Text>
+                            <Divider />
+                        </HStack>
+
+                        <ButtonGroup mb={0} ml={"auto"} mr={"auto"}>
+                            <Button leftIcon={<FaFacebook color={"#1977F3"} fontSize="20px" />} fontSize={"12px"} variant={"outline"}>Continue with Facebook</Button>
+                            <Button leftIcon={<FcGoogle fontSize="20px" />} fontSize={"12px"} variant={"outline"}>Continue with Google</Button>
+                        </ButtonGroup>
+                        <Text mb={5} textAlign={"center"} fontSize={"xs"}>By Signing up you agree to our <b> Terms & Conditions</b></Text>
+                    </Grid>
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+    </>
+}

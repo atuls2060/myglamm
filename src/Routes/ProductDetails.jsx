@@ -1,6 +1,6 @@
 import { StarIcon } from "@chakra-ui/icons"
 import { BiShoppingBag } from "react-icons/bi"
-import { Container, Heading, Text, HStack, Divider, Button, Grid } from "@chakra-ui/react"
+import { Container, Heading, Text, HStack, Divider, Button, Grid, Stack, useBreakpointValue } from "@chakra-ui/react"
 import ProductDetailsCarousel from "../Components/ProductDetailsCarousel"
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from './../Contexts/CartContext';
@@ -11,6 +11,8 @@ export default () => {
     const { addToCart } = useContext(CartContext);
     const [product, setProduct] = useState({})
     const { id } = useParams();
+    const direction = useBreakpointValue({ base: "column", lg: "row"})
+    const containerWidth = useBreakpointValue({ base: "95%", md: "90%",lg:"80%" })
 
     const addToCartHandler = () => {
         addToCart(product)
@@ -27,8 +29,8 @@ export default () => {
 
     const { images, image, name, subtitle, offerPrice, rating = 5, totalRating = 16 } = product;
 
-    return <Container mt="200px" maxW="80%">
-        <HStack align={"start"} spacing={10}>
+    return <Container mt="200px" maxW={containerWidth}>
+        <Stack direction={direction} align={"start"} spacing={10}>
             <ProductDetailsCarousel images={images} image={image} />
             <Grid align="start">
                 <Heading fontSize={"lg"} lineHeight="30px">{name}</Heading>
@@ -75,6 +77,6 @@ export default () => {
                     </Text>
                 </HStack>
             </Grid>
-        </HStack>
+        </Stack>
     </Container >
 }

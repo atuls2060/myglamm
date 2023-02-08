@@ -3,10 +3,10 @@ import { createContext } from "react";
 
 export const CartContext = createContext();
 
-
+const items = JSON.parse(localStorage.getItem("cartItems")) || []
 function CartContextProvider({ children }) {
-    const [itemCount, setItemCount] = useState(0);
-    const [cartItems, setCartItems] = useState([])
+    const [itemCount, setItemCount] = useState(items.length);
+    const [cartItems, setCartItems] = useState(items)
     const [total, setTotal] = useState(0)
 
     const addToCart = (product) => {
@@ -14,11 +14,13 @@ function CartContextProvider({ children }) {
 
         setItemCount(itemCount + 1)
         setCartItems(updatedData)
+        saveToStorage(updatedData)
         makeTotal(updatedData)
     }
     const removeFromCart = (id) => {
         let updatedData = cartItems.filter((elm, index) => index !== id)
         setCartItems(updatedData)
+        saveToStorage(updatedData)
         makeTotal(updatedData)
     }
 
@@ -26,6 +28,7 @@ function CartContextProvider({ children }) {
         let updatedData = cartItems.map((elm, index) => index == id ? { ...elm, quantity: qty } : elm)
         setCartItems(updatedData)
         makeTotal(updatedData)
+        saveToStorage(updatedData)
     }
 
     const makeTotal = (data) => {
@@ -34,6 +37,10 @@ function CartContextProvider({ children }) {
             return acc + (parseFloat(elm.offerPrice) * elm.quantity)
         }, 0)
         setTotal(bill)
+    }
+
+    const saveToStorage = (products)=>{
+        localStorage.setItem("cartItems",JSON.stringify(products))
     }
 
     return <CartContext.Provider value={{ itemCount, cartItems, addToCart, removeFromCart, total, changeQty }}>{children}</CartContext.Provider>

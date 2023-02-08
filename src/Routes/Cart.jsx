@@ -1,19 +1,36 @@
-import { Button, Card, Container, Flex, Heading, HStack, Img, Spacer, Text } from "@chakra-ui/react"
+import { Button, Card, Container, Flex, Heading, HStack, Img, Spacer, Text, useToast } from "@chakra-ui/react"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useContext, useState, useEffect } from "react"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import CartItem from "../Components/CartItem";
 import ProfileDropDown from "../Components/ProfileDropDown"
+import { AuthContext } from "../Contexts/AuthContext";
 import { CartContext } from './../Contexts/CartContext';
 
 
 export default () => {
     const {total, cartItems} = useContext(CartContext);
     const navigate = useNavigate()
-    console.log(cartItems)
+    const toast = useToast()
 
     const placeOrder = () => {
-        alert("Order Placed")
-        navigate("/")
+        if(cartItems.length === 0){
+            toast({
+                title: 'Nothing in your Cart',
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+                position: "top"
+            })
+            return
+        }
+        onAuthStateChanged(getAuth(),(user)=>{
+            if(user){
+                navigate("/checkout")
+            }else{
+                navigate("/login")
+            }
+        })
     }
 
     return <>

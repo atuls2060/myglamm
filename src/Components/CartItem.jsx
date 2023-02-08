@@ -10,9 +10,9 @@ export default ({ image, name, offerPrice, quantity, id }) => {
     return <>
         <Box p="10px" borderBottom="1px solid #E0E0E0">
             <HStack>
-                <HStack flex={1} align="start" spacing={"10"}>
+                <HStack alignItems="center" flex={1} align="start" spacing={"10"}>
                     <Img maxW="100px" src={image} alt="" />
-                    <Text>{name}</Text>
+                    <Text noOfLines={1}>{name}</Text>
                 </HStack>
                 <HStack flex={1} justifyContent={"space-around"} alignSelf={"center"} >
                     <Text>{offerPrice}</Text>

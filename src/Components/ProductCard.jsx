@@ -20,7 +20,7 @@ export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=fa
     }
     return (
         <Link to={`/products/${id}`}>
-            <Card bg={"white"} w={"fit-content"} m={10} shadow={"md"} {...style} style={{cursor:"pointer"}}>
+            <Card bg={"white"} w={"fit-content"} m={10}  height={isNavBarCard ? "auto": "450px"} shadow={"md"} {...style} style={{cursor:"pointer"}}>
                 <CardBody>
                     <Image
                         alt=""
