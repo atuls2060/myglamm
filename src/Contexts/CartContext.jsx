@@ -9,6 +9,12 @@ function CartContextProvider({ children }) {
     const [cartItems, setCartItems] = useState(items)
     const [total, setTotal] = useState(0)
 
+    const reloadCartItems = ()=>{
+        const items = JSON.parse(localStorage.getItem("cartItems")) || []
+        setCartItems(items)
+        setItemCount(items.length)
+    }
+
     const addToCart = (product) => {
         let updatedData = [...cartItems, { ...product, quantity: 1 }];
 
@@ -43,7 +49,7 @@ function CartContextProvider({ children }) {
         localStorage.setItem("cartItems",JSON.stringify(products))
     }
 
-    return <CartContext.Provider value={{ itemCount, cartItems, addToCart, removeFromCart, total, changeQty }}>{children}</CartContext.Provider>
+    return <CartContext.Provider value={{ itemCount, cartItems, addToCart, removeFromCart, total, changeQty,reloadCartItems }}>{children}</CartContext.Provider>
 }
 
 export default CartContextProvider;

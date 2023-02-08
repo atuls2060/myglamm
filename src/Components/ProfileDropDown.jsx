@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import { Menu, MenuButton, Img, MenuList, MenuItem, Button, Text, HStack, useToast } from "@chakra-ui/react"
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 export default () => {
     const [name, setName] = useState("");
     const toast = useToast()
+    const navigate = useNavigate()
 
     const getCurrentUSerDetails = () => {
         onAuthStateChanged(getAuth(), (user) => {
@@ -47,11 +49,12 @@ export default () => {
             </MenuButton>
             <MenuList textAlign={"center"} p={0} minW="0">
                 {
-                    name != "" &&    <><MenuItem _hover={{ bg: "none", fontWeight: "500" }} w="130px">My Profile</MenuItem>
-                <MenuItem _hover={{ bg: "none", fontWeight: "500" }} w="130px">My Orders </MenuItem>
-                <MenuItem _hover={{ bg: "none", fontWeight: "500" }} onClick={logoutUser} w="130px"><Button>Logout</Button></MenuItem>
-                <MenuItem _hover={{ bg: "none", fontWeight: "500" }} w="130px"></MenuItem>
-                </>
+                    name != "" && <>
+                        <MenuItem _hover={{ bg: "none", fontWeight: "500" }} w="130px">My Profile</MenuItem>
+                        <MenuItem onClick={() => navigate("/orders")} _hover={{ bg: "none", fontWeight: "500" }} w="130px">My Orders </MenuItem>
+                        <MenuItem _hover={{ bg: "none", fontWeight: "500" }} onClick={logoutUser} w="130px"><Button>Logout</Button></MenuItem>
+                        <MenuItem _hover={{ bg: "none", fontWeight: "500" }} w="130px"></MenuItem>
+                    </>
                 }
             </MenuList>
         </Menu>

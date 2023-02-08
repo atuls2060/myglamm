@@ -67,25 +67,31 @@ let Links = [
         ],
         products: [
             {
+                id: "3khsrsjACKsaEOXllCXM",
                 image: "https://files.myglamm.com/site-images/800x800/Onion-Nourishment---Shampoo-&-Conditioner_1.jpg",
                 name: "Onion Nourishment - Shampoo & Conditioner Combo - Hair Care",
                 subtitle: "Our Shampoo and Conditioner combo is uniquely formulated with all-natural, superfood ingredients, handpicked for their efficacy.",
                 offerPrice: "₹388",
                 actualPrice: "590"
+                , category: "Haircare"
             },
             {
+                id: "maOUMf8h7moyuUah249r",
                 image: "https://files.myglamm.com/site-images/800x800/Artboard-1-(3).jpg",
                 name: "Manish Malhotra Soft Matte Lipstick - Poppy Pink",
                 subtitle: "Hydrating Long-wear Lipstick",
                 offerPrice: "₹475",
-                actualPrice: "₹950"
+                actualPrice: "₹950",
+                category: "Haircare"
             },
             {
+                id: "zKCnX2kMJhYmNXhWqtB0",
                 image: "https://files.myglamm.com/site-images/800x800/Artboard-1_27.jpg",
                 name: "MyGlamm WIPEOUT Germ Killing Face Wash",
                 subtitle: "Tea Tree Oil & Vitamin E-infused Face Wash",
                 offerPrice: "₹89",
-                actualPrice: "₹119"
+                actualPrice: "₹119",
+                category: "Haircare"
             },
         ]
     },
@@ -115,25 +121,31 @@ let Links = [
         ],
         products: [
             {
+                id: "3lUTrOFdgbQDdKH6IlXg",
                 image: "https://files.myglamm.com/site-images/800x800/17-Amla-Moisturising-Gel-Post-1-01.jpg",
                 name: "MANISH MALHOTRA AMLA MOISTURISING GEL",
                 subtitle: "Our Shampoo and Conditioner combo is uniquely formulated with all-natural, superfood ingredients, handpicked for their efficacy.",
                 offerPrice: "₹756",
-                actualPrice: "945"
+                actualPrice: "945",
+                category: "Skin"
             },
             {
+                id: "DdZzzsgwHdaz20J8Xf1X",
                 image: "https://files.myglamm.com/site-images/800x800/SN4.png",
                 name: "POPXO SUN SOOTHER AFTER SUN LOTION 30G",
                 subtitle: "Lotion For Sun-bathers",
                 offerPrice: "₹226",
-                actualPrice: "349"
+                actualPrice: "349",
+                category: "Skin"
             },
             {
+                id: "eMXpphw2avndV5SnRwEl",
                 image: "https://files.myglamm.com/site-images/800x800/Blueberry---Strawberry-Face-Cream-1_1.jpg",
                 name: "MYGLAMM SUPERFOODS BLUEBERRY & STRAWBERRY FACE CREAM 50G",
                 subtitle: "Brightening & hydrating face cream with natural extracts from natural superfoods",
                 offerPrice: "₹239",
-                actualPrice: "399"
+                actualPrice: "399",
+                category: "Skin"
             },
         ]
     }
@@ -181,7 +193,7 @@ let Links = [
     {
         label: "Favourites",
         path: "#",
-        image:"https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fsk-fav-min_5.jpg&w=64&q=75"
+        image: "https://www.myglamm.com/_next/image?url=https%3A%2F%2Ffiles.myglamm.com%2Fsite-images%2Foriginal%2Fsk-fav-min_5.jpg&w=64&q=75"
     },
     {
         label: "Collection",

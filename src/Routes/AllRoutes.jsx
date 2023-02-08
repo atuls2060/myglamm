@@ -11,6 +11,7 @@ import NavbarPage from "./NavbarPage";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import Checkout from "./Checkout";
+import Orders from "./Orders";
 
 export default () => {
     return <Box>
@@ -24,6 +25,7 @@ export default () => {
             <Route path="/register" element={<Register />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Orders />} />
         </Routes>
     </Box>
 }

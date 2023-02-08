@@ -2,11 +2,12 @@ import { Box, Container, Flex, Img, Show, useBreakpointValue } from "@chakra-ui/
 import Carousel from "../Components/Carousel/Carousel"
 import Offers from "../Components/Offers"
 import { getProducts } from "../Utils/database"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../Components/Footer"
 import Video from "../Components/Video"
 import Links from "../Utils/navbarData";
 import NavLinkItem from "../Components/NavLinkItem";
+import { CartContext } from "../Contexts/CartContext";
 
 
 
@@ -58,14 +59,14 @@ export default () => {
     const slidesToShow = useBreakpointValue({ base: 1, md: "2",lg:4 })
     const containerWidth = useBreakpointValue({ base: "95%", md: "90%",lg:"80%" })
 
-
     const getData = async () => {
         const data = await getProducts()
         setProducts(data)
     }
 
-
+   
     useEffect(() => {
+        
         getData()
     }, [data])
     return <>

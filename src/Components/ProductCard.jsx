@@ -28,7 +28,7 @@ export default ({ image, name, subtitle, offerPrice, actualPrice,isNavBarCard=fa
                     />
                     <VStack>
                         <Heading noOfLines={isNavBarCard && 1} size="xs">{name}</Heading>
-                        <Text noOfLines={isNavBarCard && 1} fontSize="xs">
+                        <Text noOfLines={isNavBarCard ? 1 : 1} fontSize="xs">
                            {
                             subtitle
                            }

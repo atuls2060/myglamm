@@ -10,19 +10,19 @@ export const getSingleProduct = async (id) => {
     const docSnap = await getDoc(productRef);
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
-        return { ...docSnap.data() }
+        return { ...docSnap.data(),id: docSnap.id  }
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
         return {}
     }
 }
-export const getProductsbyCategory = async (category = "Makeup",order) => {
+export const getProductsbyCategory = async (category = "Makeup", order) => {
     const productsRef = collection(db, "products")
     const orderB = order === undefined ? "name" : "actualPrice"
-    const o = order === undefined? "desc": order
-    const q = query(productsRef,where("category", "==", firstLetterCapital(category)),orderBy(orderB,o));
-    
+    const o = order === undefined ? "desc" : order
+    const q = query(productsRef, where("category", "==", firstLetterCapital(category)), orderBy(orderB, o));
+
 
     // if(start){
     //     q.startAt(start)
@@ -39,7 +39,7 @@ export const getProductsbyCategory = async (category = "Makeup",order) => {
     } catch (error) {
         console.log(error)
     }
-   
+
 }
 
 export const getProductsbyKeyword = async (keyword = "") => {
@@ -72,7 +72,7 @@ export const getProducts = async () => {
 const addProduct = async (product) => {
     try {
         const docRef = await addDoc(collection(db, "products"), product);
-        console.log("Document written with ID: ", docRef.id);
+        console.log(docRef.id);
     } catch (e) {
         console.error("Error adding document: ", e);
     }
@@ -95,12 +95,12 @@ export const loginUserApi = async ({ email, password }) => {
     try {
         const userCredential = await signInWithEmailAndPassword(getAuth(), email, password)
         const user = userCredential.user;
-        return { uid: user.uid,name:user.displayName,errorMessage:"" }
+        return { uid: user.uid, name: user.displayName, errorMessage: "" }
 
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        return {errorMessage}
+        return { errorMessage }
     }
 
 }
@@ -111,14 +111,43 @@ export const createAccountApi = async ({ name, email, password }) => {
         const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password)
         const user = userCredential.user;
         await updateProfile(user, { displayName: name })
-        return { uid: user.uid,name,errorMessage:""  }
+        return { uid: user.uid, name, errorMessage: "" }
 
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        return {errorMessage}
+        return { errorMessage }
     }
 }
+
+
+export  const saveOrder = async (order) => {
+    try {
+        const docRef = await addDoc(collection(db, "orders"), order);
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+}
+
+
+export const getOrders = async (userId) => {
+    const ordersRef = collection(db, "orders")
+    console.log(userId)
+    const q = query(ordersRef, where("userId", "==", userId));
+
+
+    const data = [];
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        data.push({ ...doc.data(), orderId: doc.id })
+    });
+
+    return data
+}
+
+
+
+
 
 
 

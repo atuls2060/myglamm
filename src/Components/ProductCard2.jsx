@@ -21,7 +21,7 @@ export default ({ image, name, subtitle, offerPrice, actualPrice }) => {
                     />
                     <Grid mt={12} templateRows="repeat(3,1fr)" textAlign={"start"}>
                         <Heading fontSize={"lg"} lineHeight="30px">{name}</Heading>
-                        <Text mt={1} fontSize="lg">
+                        <Text noOfLines={1} mt={1} fontSize="lg">
                             {
                                 subtitle
                             }

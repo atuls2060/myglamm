@@ -12,15 +12,15 @@ import { getProductsbyKeyword } from "../Utils/database"
 import ResultItem from "./ResultItem"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 export default () => {
-    const { itemCount } = useContext(CartContext)
-    const {toggleModal } = useContext(AuthContext)
+    const { itemCount} = useContext(CartContext)
+    const { toggleModal } = useContext(AuthContext)
     const [result, setResult] = useState([])
     const timerRef = useRef(null);
     const [keyword, setKeyword] = useState("");
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const containerWidth = useBreakpointValue({ base: "100%", md: "70%", })
-    const [isLoggedIn,setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const changeHandler = (e) => {
         const val = e.target.value
@@ -48,23 +48,23 @@ export default () => {
         }
     }
     const openSearchResult = (id) => {
-        navigate(`/products/${id}`)
-        console.log(id)
         setShow(false)
+        navigate(`/products/${id}`)
+       
     }
 
-    const getCurrentUSerDetails = ()=>{
-        onAuthStateChanged(getAuth(),(user)=>{
-            if(user){
+    const getCurrentUSerDetails = () => {
+        onAuthStateChanged(getAuth(), (user) => {
+            if (user) {
                 setIsLoggedIn(true)
-            }else{
+            } else {
                 setIsLoggedIn(false)
             }
         })
     }
 
     useEffect(() => {
-     getCurrentUSerDetails()
+        getCurrentUSerDetails()
     }, [itemCount])
 
     return <Box m={0} className={Styles.navbar}  >
@@ -96,7 +96,7 @@ export default () => {
                             <InputGroup>
                                 <InputLeftElement><Search2Icon /></InputLeftElement>
                                 <Input className={Styles.search_input} value={keyword} onChange={changeHandler} focusBorderColor={"#daaa4d"} variant={"outline"} type="text" placeholder="Find Lipstick, Eyeliner, Makeup Tutorial, etc" />
-                                <VStack display={show ? "block" : "none"} p={2} align={"start"} gap={2} className={Styles.search_result_container}>
+                                <VStack display={show ? "block" : "none"} p={show ? 2 : 0} border={` ${show ? 1 : 0}px solid #e4e4e4`} align={"start"} gap={2} className={Styles.search_result_container}>
                                     {
                                         result?.map((item, index) => {
                                             return <Link to={`/products/${item.id}`} onClick={() => openSearchResult(item.id)}> <ResultItem key={index} {...item} /></Link>
