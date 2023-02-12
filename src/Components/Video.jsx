@@ -15,7 +15,7 @@ export default () => {
         }
     }
 
-    return <Box  position="relative">
+    return <Box border="1px solid"  position="relative">
         <Container  left="50%" transform={"translate(-50%,-50%)"} top={"50%"} maxW="70%" position={"absolute"} color="white" zIndex={10}>
             <VStack spacing={10} >
                 <Heading>
@@ -26,7 +26,7 @@ export default () => {
             </VStack>
         </Container>
         <Box pointerEvents={"none"}>
-        <video ref={videoRef}  width="100%" height="auto" autoPlay={false} >
+        <video style={{border:"1px solid"}} ref={videoRef}  width="100%" height="200" muted autoPlay={false} >
             <source src="https://www.myglamm.com/images/TellMyGlammWhatYouWant.webm" type="video/webm" />
         </video>
         </Box>

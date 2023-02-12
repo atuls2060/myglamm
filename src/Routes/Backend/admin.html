@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <span class="logo_name">MyGlamn Backend</span>
+    </div>
+    <div class="nav-links">
+      <a id="dashboard" href="#" class="active">
+        <box-icon color="white" name='grid-alt'></box-icon>
+        <span class="links_name">Dashboard</span>
+      </a>
+      <a id="products" href="#">
+        <box-icon color="white" name='box'></box-icon>
+        <span class="links_name">Products</span>
+      </a>
+      <a id="orders" href="#">
+        <box-icon color="white" name='list-ul'></box-icon>
+        <span class="links_name">Order list</span>
+      </a>
+      <a id="users" href="#">
+        <!-- <box-icon color="white" name='pie-chart-alt-2'></box-icon> -->
+        <box-icon color="white" name='crown'></box-icon>
+        <span class="links_name">Customers</span>
+      </a>
+      <a href="#">
+        <box-icon color="white" name='book-alt'></box-icon>
+        <span class="links_name">Total order</span>
+      </a>
+      <a href="#" id="add_product">
+        <box-icon color="white" name='coin-stack'></box-icon>
+        <span class="links_name">Add Product</span>
+      </a>
+      <a href="#">
+        <box-icon color="white" name='user'></box-icon>
+        <span class="links_name">Team</span>
+      </a>
+      <a href="#">
+        <box-icon color="white" name='cog'></box-icon>
+        <span class="links_name">Setting</span>
+      </a>
+      <a class="log_out" href="#">
+        <box-icon color="white" name='log-out'></box-icon>
+        <span class="links_name">Log out</span>
+      </a>
+    </div>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <box-icon size="md" name='menu' class="sidebarBtn"></box-icon>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <div class="search-icon">
+          <box-icon color="white" size="sm" name='search'></box-icon>
+        </div>
+      </div>
+      <div class="profile-details">
+        <img src="images/profile.jpg" alt="">
+        <span class="admin_name">Atul Singh</span>
+        <box-icon color="#333" name='chevron-down'></box-icon>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Order</div>
+            <div class="number">876</div>
+          </div>
+          <i class='bx bx-cart-alt cart'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Sales</div>
+            <div class="number">₹ 30,768</div>
+          </div>
+          <i class='bx bx-money money'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Products</div>
+            <div class="number">7</div>
+          </div>
+          <i class='bx bx-box box-product'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Pending Orders</div>
+            <div class="number">40</div>
+          </div>
+          <i class='bx bx-list-ul list-ul'></i>
+        </div>
+      </div>
+      <div id="data_div">
+
+      </div>
+    </div>
+  </section>
+
+  <div id="popup"></div>
+  <!-- bootstrap cdn -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<script type="module" src="scripts/admin.js">
+</script>

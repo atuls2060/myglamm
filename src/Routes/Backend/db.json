@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "email": "atuls2060@gail.com",
+      "password": "$2a$10$8yk/4.BP1Ik5nI.AX84sG.bhlhxc137eOysrLMSzrXYGqmQC7ogMy",
+      "name": "Atul Singh",
+      "id": 1,
+      "profile_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJZG-8Pk5VYr_MOP4Ks3uEeZdArTUAizNRwg&usqp=CAU"
+    },
+    {
+      "email": "atuls2060@gmail.com",
+      "password": "$2a$10$Ji53EJYuojAFEEJOn4X6Te8Nwg3icywDM9n7SCnNJhGhpLv0EKelS",
+      "name": "Atul Singh",
+      "id": 2,
+      "isAdmin": true
+    },
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$vGfcc5oujHf40e2otjDBQ.mu2wjWXhoyYzkF2bG6X1Mj8yiSoWmoW",
+      "id": 3
+    },
+    {
+      "email": "olivier@mailll.com",
+      "password": "$2a$10$dQ2wZnKQu4.2nP6F8RQwx.ZwH149azVgnU63gxU.fgBq/6o4koMr2",
+      "id": 4
+    },
+    {
+      "email": "olivier@mailll.cm",
+      "password": "$2a$10$2VIXTkIi5jByinZiupTeJ.BanzboAEeGwEscrjYfduSrjvyOTlCuW",
+      "id": 5
+    },
+    {
+      "email": "olvier@mailll.cm",
+      "password": "$2a$10$DFueg57M9mIPdo8FderbiONCKq7ldhgnGZIbEQ461.77GVekogyhC",
+      "isAdmin": false,
+      "id": 6
+    },
+    {
+      "email": "olvier@mailll.cmmmm",
+      "password": "$2a$10$csgcJ7avocxg/D9YshE0iOGFyY4yFSAmLBv9Wv/hpwgr6knSytLJC",
+      "isAdmin": false,
+      "isTeam": false,
+      "id": 7
+    },
+    {
+      "email": "atuls2060@gmail.commmmm",
+      "password": "$2a$10$5OB7YWvbJdX1LPO.BFR9U.4QvpFPb3WjU4leM4tZ.KJaq.4hcebtu",
+      "isAdmin": false,
+      "isTeam": false,
+      "id": 8
+    },
+    {
+      "email": "atuls2060@gasnckjascnmail.commmmm",
+      "password": "$2a$10$5fHQ8aDYg.4qRKb5ktTUi.xEaOiVHvW/F4U.vqoxAWnA339i.PEHG",
+      "isAdmin": false,
+      "isTeam": false,
+      "id": 9
+    }
+  ],
+  "products": [
+    {
+      "title": "Some Product",
+      "brand": "MI",
+      "price": 500,
+      "discount": 0,
+      "description": "Great Product",
+      "category": "Phone",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ07AiuDhHX36LPByGFsnKkc01qkb1lprYNRQ&usqp=CAU",
+      "images": [],
+      "rating": 4.5,
+      "rating_count": 63,
+      "review": [],
+      "id": 1
+    },
+    {
+      "title": "Nice Product",
+      "brand": "MI",
+      "price": 600,
+      "discount": 0,
+      "description": "Great Product",
+      "category": "Phone",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ07AiuDhHX36LPByGFsnKkc01qkb1lprYNRQ&usqp=CAU",
+      "images": [],
+      "rating": 4.5,
+      "rating_count": 63,
+      "review": [],
+      "id": 2
+    },
+    {
+      "title": "Some Product",
+      "brand": "MI",
+      "price": 500,
+      "discount": 0,
+      "description": "Great Product",
+      "category": "Phone",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ07AiuDhHX36LPByGFsnKkc01qkb1lprYNRQ&usqp=CAU",
+      "images": [],
+      "rating": 4.7,
+      "rating_count": 63,
+      "review": [],
+      "id": 3
+    },
+    {
+      "title": "Some Product",
+      "brand": "MI",
+      "price": 1000,
+      "discount": 10,
+      "description": "Great Product",
+      "category": "Phone",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ07AiuDhHX36LPByGFsnKkc01qkb1lprYNRQ&usqp=CAU",
+      "images": [],
+      "rating": 4.6,
+      "rating_count": 63,
+      "review": [],
+      "id": 4
+    }
+  ],
+  "order": [],
+  "cart": [],
+  "team": [
+    {
+      "id": 1
+    },
+    {
+      "email": "atuls2060@gail.com",
+      "password": "$2a$10$8yk/4.BP1Ik5nI.AX84sG.bhlhxc137eOysrLMSzrXYGqmQC7ogMy",
+      "name": "Atul Singh",
+      "profile_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJZG-8Pk5VYr_MOP4Ks3uEeZdArTUAizNRwg&usqp=CAU",
+      "id": 2
+    },
+    {
+      "email": "atuls2060@gail.com",
+      "password": "$2a$10$8yk/4.BP1Ik5nI.AX84sG.bhlhxc137eOysrLMSzrXYGqmQC7ogMy",
+      "name": "Atul Singh",
+      "profile_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJZG-8Pk5VYr_MOP4Ks3uEeZdArTUAizNRwg&usqp=CAU",
+      "isAdmin": false,
+      "id": 3
+    }
+  ]
+}

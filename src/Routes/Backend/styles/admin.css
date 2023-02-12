@@ -1,0 +1,359 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  width: 240px;
+  background: #dbab4d;
+  height: 100vh;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active {
+  width: 60px;
+}
+
+.sidebar .logo-details {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .logo-details i {
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 60px;
+  text-align: center
+}
+
+.sidebar .logo-details .logo_name {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.sidebar .nav-links {
+  margin-top: 10px;
+  display: grid;
+  height: calc(100% - 90px);
+  grid-template-rows: repeat(9,1fr);
+}
+
+.sidebar .nav-links a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  color: white;
+}
+
+.sidebar .nav-links a.active {
+  background: #ae883e;
+}
+
+.sidebar .nav-links a:hover {
+  background: #ae883e;
+}
+
+.sidebar .nav-links box-icon {
+  min-width: 60px;
+  text-align: center;
+  color: #fff;
+}
+
+.sidebar .nav-links a .links_name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.sidebar .nav-links .log_out {
+  bottom: 0;
+  width: 100%;
+}
+
+.home-section {
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100vh;
+  width: calc(100% - 240px);
+  left: 240px;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active~.home-section {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+
+.home-section nav {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 240px);
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.sidebar.active~.home-section nav {
+  left: 60px;
+  width: calc(100% - 60px);
+}
+
+.home-section nav .sidebar-button {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+nav .sidebar-button box-icon {
+  margin-right: 10px;
+}
+
+.home-section nav .search-box {
+  position: relative;
+  height: 50px;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+nav .search-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+}
+
+nav .search-box .search-icon {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background: #2697FF;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  text-align: center;
+  line-height: 55px;
+  color: #fff;
+  transition: all 0.4 ease;
+}
+
+.home-section nav .profile-details {
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  height: 50px;
+  min-width: 190px;
+  padding: 0 15px 0 2px;
+}
+
+nav .profile-details img {
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+nav .profile-details .admin_name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+
+.home-section .home-content {
+  padding-top: 104px;
+}
+/* Sales overview */
+.home-content .overview-boxes{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-bottom: 26px;
+}
+.overview-boxes .box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% / 4 - 15px);
+  background: #fff;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.overview-boxes .box-topic{
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-content .box .number{
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+}
+.home-content .box i{
+  display: inline-block;
+  font-size: 32px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 12px;
+  margin: -15px 0 0 6px;
+}
+.cart{
+  color: #66b0ff;
+  background: #cce5ff;
+}
+.money{
+  color: #2BD47D;
+  background: #C0F2D8;
+}
+.box-product{
+  color: #3069B3;
+  background: #36A1D7;
+}
+.list-ul{
+  color: #ffc233;
+  background: #ffe8b3;
+}
+.home-content .box .cart.two{
+   color: #2BD47D;
+   background: #C0F2D8;
+ }
+.home-content .box .cart.three{
+   color: #ffc233;
+   background: #ffe8b3;
+ }
+.home-content .box .cart.four{
+   color: #e05260;
+   background: #f7d4d7;
+ }
+.home-content .total-order{
+  font-size: 20px;
+  font-weight: 500;
+}
+/* Sales overview */
+.data_heading{
+  margin-bottom: 20px;
+}
+#data_div {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #dbab4d;
+}
+
+th {
+  background-color: #dbab4d;
+  color: white;
+  padding: 10px 14px;
+}
+
+td {
+  padding: 10px 14px;
+  border-right: 1px solid #dbab4d;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+td:nth-last-child(2) {
+  color: green;
+  cursor: pointer;
+  font-size: 20px;
+}
+td:last-child {
+  color: red;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+#add_product_form{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+
+/*add product */
+label{
+  font-weight: 500;
+}
+input,textarea{
+  display: block;
+  padding: 8px 12px;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 6px;
+  outline: none;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+}
+#description_div{
+ grid-column: 1/3;
+}
+#description {
+  resize: vertical;
+}
+
+input[type="submit"]{
+  background-color: #dbab4d;
+  color: white;
+  border: 1px solid #dbab4d;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover{
+  background-color: #ae883e;
+}
+
+/*Edit Popup Modal*/
+/* .modal-dialog{
+  width: 500px !important;
+  position: relative;
+  top: 0;
+}
+.modal-content{
+  width: 120px;
+  display: none;
+} */

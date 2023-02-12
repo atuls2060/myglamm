@@ -84,18 +84,16 @@
     position: absolute;
     right: -9px;
     top: -5px;
-}
+}   
 .search_input:focus ~ .search_result_container{
     display: block;
 }
 .search_result_container{
     display: none;
     position: absolute;
-    height: auto;
     width: 100%;
     background-color: white;
-    top: 50px;
-    border: 1px solid #E0E0E0;
+    top: 48px;
     border-radius: 4px;
     box-sizing: border-box;
     overflow: hidden;

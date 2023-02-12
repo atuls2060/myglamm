@@ -12,7 +12,7 @@ import Styles from "./productcard2.module.css"
 export default ({ image, name, subtitle, offerPrice, actualPrice }) => {
     return (
         <>
-            <Card className={Styles.card} bg={"white"} w={"fit-content"} borderRadius={"none"} border="1px solid #E0E0E0" shadow={"none"}>
+            <Card h="100%" className={Styles.card} bg={"white"} borderRadius={"none"} border="1px solid #E0E0E0" shadow={"none"}>
                 <CardBody>
                     <Image
                         className={Styles.image}
@@ -21,7 +21,7 @@ export default ({ image, name, subtitle, offerPrice, actualPrice }) => {
                     />
                     <Grid mt={12} templateRows="repeat(3,1fr)" textAlign={"start"}>
                         <Heading fontSize={"lg"} lineHeight="30px">{name}</Heading>
-                        <Text mt={1} fontSize="lg">
+                        <Text noOfLines={1} mt={1} fontSize="lg">
                             {
                                 subtitle
                             }
